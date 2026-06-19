@@ -1,0 +1,61 @@
+* { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
+body { background-color: #f4f6f9; color: #333; min-height: 100vh; display: flex; flex-direction: column; }
+
+header { background-color: #1e3a8a; color: white; padding: 15px 20px; text-align: center; font-size: 20px; font-weight: bold; position: relative; }
+.btn-volver { position: absolute; left: 20px; top: 15px; background: #3b82f6; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; display: none; font-size: 14px; }
+.btn-volver:hover { background: #2563eb; }
+
+.container { flex: 1; max-width: 1200px; width: 100%; margin: 20px auto; padding: 0 20px; display: flex; flex-direction: column; }
+.pantalla { display: none; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.pantalla.activa { display: block; }
+
+/* PANTALLA 1: MENU PRINCIPAL */
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
+.menu-btn { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 12px; padding: 40px 20px; text-align: center; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.menu-btn:hover { border-color: #3b82f6; transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+.menu-btn h3 { font-size: 20px; color: #1e293b; margin-top: 10px; }
+.menu-btn .icon { font-size: 40px; }
+
+/* PANTALLA 2: VENTAS */
+.ventas-container { display: flex; gap: 20px; height: 65vh; }
+.productos-pos { flex: 1.5; overflow-y: auto; padding-right: 10px; }
+.carrito-pos { flex: 1; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px; display: flex; flex-direction: column; }
+.grid-productos { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.tarjeta-venta { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; text-align: center; cursor: pointer; transition: 0.15s; }
+.tarjeta-venta:hover { background: #e2e8f0; }
+.tarjeta-venta .stock-label { font-size: 11px; font-weight: bold; }
+.lista-carrito { flex: 1; overflow-y: auto; margin: 15px 0; list-style: none; }
+.item-carrito { display: flex; justify-content: space-between; align-items: center; background: white; padding: 8px 12px; border-radius: 4px; margin-bottom: 8px; border: 1px solid #e2e8f0; font-size: 14px; }
+.btn-remove { background: #ef4444; color: white; border: none; padding: 2px 6px; cursor: pointer; border-radius: 3px; }
+.btn-cobrar { background: #107c41; color: white; width: 100%; padding: 12px; font-weight: bold; font-size: 16px; border: none; border-radius: 6px; cursor: pointer; }
+.btn-cobrar:hover { background: #0b592e; }
+
+/* PANTALLA 3: INVENTARIO */
+.excel-actions { margin-bottom: 20px; display: flex; gap: 10px; align-items: center; background: #f8fafc; padding: 12px; border-radius: 6px; }
+.file-input-label { background: #4f46e5; color: white; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: bold; }
+.file-input-label input { display: none; }
+.form-inventario { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 20px; }
+.form-inventario input { padding: 8px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 14px; }
+.btn-add-inv { background: #3b82f6; color: white; border: none; padding: 8px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+.tabla-wrapper { max-height: 400px; overflow-y: auto; border: 1px solid #cbd5e1; border-radius: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; }
+th, td { padding: 10px 12px; border-bottom: 1px solid #cbd5e1; }
+th { background: #f1f5f9; position: sticky; top: 0; color: #475569; }
+
+/* PANTALLA 4: CIERRE DE CAJA */
+.cierre-container { display: flex; gap: 30px; }
+.arqueo-panel { flex: 1; }
+.resumen-panel { flex: 1; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 20px; }
+.grid-monedas { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.fila-moneda { display: flex; align-items: center; justify-content: space-between; background: #f1f5f9; padding: 6px 12px; border-radius: 6px; }
+.fila-moneda span { font-weight: bold; font-size: 14px; }
+.fila-moneda input { width: 80px; padding: 5px; text-align: right; border: 1px solid #cbd5e1; border-radius: 4px; }
+.totales-cierre { margin-top: 15px; font-size: 15px; line-height: 1.8; border-top: 1px dashed #cbd5e1; padding-top: 10px; }
+
+/* UTILIDADES GENERALES */
+h2 { font-size: 22px; color: #1e293b; margin-bottom: 15px; }
+.totales-box { margin-bottom: 15px; font-size: 14px; border-top: 1px solid #cbd5e1; padding-top: 10px; }
+.totales-box div { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.total-destacado { font-size: 18px; font-weight: bold; color: #1e3a8a; }
+.badge-rojo { color: #ef4444; font-weight: bold; }
+.badge-verde { color: #10b981; font-weight: bold; }
